@@ -101,13 +101,15 @@ end)
 
 
 
-Section:NewButton("Auto Curse Farm", "Put the skills on Z,X,C,V", function()
+Section:NewButton("Auto Curse Farm", "Put the skills on Z,X,C,V.B.N", function()
     while true do
         wait(0.1)
         game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.Z,false,game)
         game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.X,false,game)
         game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.C,false,game)
         game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.V,false,game)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.B,false,game)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.N,false,game)
     end
 end)
 
