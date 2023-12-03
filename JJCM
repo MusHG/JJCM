@@ -4,15 +4,32 @@ local Tab = Window:NewTab("auto farm")
 local Section = Tab:NewSection("farm")
 
 
-Section:NewButton("Teleport Behind Dummy", "Teleports behind the dummy", function()
-    local player = game.Players.LocalPlayer
+local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
+local Window = Library.CreateLib("a9eal's | https://discord.gg/F8gHQ8PJPF | Join For Updates ! ", "Midnight")
+local Tab = Window:NewTab("auto farm")
+local Section = Tab:NewSection("farm")
+
+
+local Toggle1 = Section:NewToggle("TeleportBehindDummy", "ToggleInfo", function(state)
+    scriptEnabled1 = state
+    if scriptEnabled1 then
+        EnableScript1()
+    else
+        DisableScript1()
+    end
+end)
+
+function EnableScript1()
+    while scriptEnabled1 do
+        wait(0)
+
+        local player = game.Players.LocalPlayer
     local dummy = workspace:WaitForChild("Dummy") 
     local dummyHumanoidRootPart = dummy:WaitForChild("HumanoidRootPart")
 
     local offset = CFrame.new(0, 0, 2) 
 
     local function teleportBehindDummy()
-        while true do
             local playerCharacter = player.Character
             local playerHumanoidRootPart = playerCharacter and playerCharacter:FindFirstChild("HumanoidRootPart")
 
@@ -21,7 +38,6 @@ Section:NewButton("Teleport Behind Dummy", "Teleports behind the dummy", functio
             end
 
             wait(0.1)
-        end
     end
 
     player.CharacterAdded:Connect(function()
@@ -29,10 +45,27 @@ Section:NewButton("Teleport Behind Dummy", "Teleports behind the dummy", functio
     end)
 
     teleportBehindDummy()
+        
+    end
+end
+
+
+function DisableScript1()
+    print("Script disabled")
+end
+
+
+local Toggle12 = Section:NewToggle("Auto Attack", "ToggleInfo", function(state)
+    scriptEnabled12 = state
+    if scriptEnabled12 then
+        EnableScript12()
+    else
+        DisableScript12()
+    end
 end)
 
-Section:NewButton("Attack Dummy", "Attacks the dummy", function()
-    while true do
+function EnableScript12()
+    while scriptEnabled12 do
         wait(0)
 
         local args = {
@@ -46,77 +79,81 @@ Section:NewButton("Attack Dummy", "Attacks the dummy", function()
         }
 
         game:GetService("ReplicatedStorage").Events.CombatEvent:FireServer(unpack(args))
+        
+    end
+end
+
+
+function DisableScript12()
+    print("Script disabled")
+end
+
+local Toggle9 = Section:NewToggle("Auto Stamina", "ToggleInfo", function(state)
+    scriptEnabled9 = state
+    if scriptEnabled9 then
+        EnableScript9()
+    else
+        DisableScript9()
     end
 end)
 
-Section:NewButton("Auto Stamina", "ButtonInfo", function()
-    while true do
+function EnableScript9()
+    while scriptEnabled9 do
         wait(0)
-game:GetService("Players").LocalPlayer.Character.Client.Server.RewardStamina:FireServer()
 
+        game:GetService("Players").LocalPlayer.Character.Client.Server.RewardStamina:FireServer()
+    end
 end
-end)
 
 
-
-Section:NewButton("Auto skill 1 Kashimo", "ButtonInfo", function()
-    while true do
-    wait(1)
-local args = {
-    [1] = {
-        ["Character"] = game:GetService("Players").LocalPlayer.Character,
-        ["Action"] = "CursedTechnique",
-        ["MiscData"] = game:GetService("Players").LocalPlayer.UIStats,
-        ["Technique"] = "KashimoVessel",
-        ["Skill"] = "ThunderStrike",
-        ["Aim"] = CFrame.new(359.52093505859375, 15.388955116271973, 699.6347045898438) * CFrame.Angles(-0, 0, -0)
-    }
-}
-
-game:GetService("ReplicatedStorage").Events.CombatEvent:FireServer(unpack(args))
+function DisableScript9()
+    print("Script disabled")
 end
-end)
 
 
 
-
-Section:NewButton("Auto Skill 2 Kashimo", "ButtonInfo", function()
-    while true do
-        wait(1)
-local args = {
-    [1] = {
-        ["Character"] = game:GetService("Players").LocalPlayer.Character,
-        ["Action"] = "CursedTechnique",
-        ["MiscData"] = game:GetService("Players").LocalPlayer.UIStats,
-        ["Technique"] = "KashimoVessel",
-        ["Skill"] = "ThunderFlash",
-        ["Aim"] = CFrame.new(359.52093505859375, 15.388955116271973, 699.6347045898438) * CFrame.Angles(-0, 0, -0)
-    }
-}
-
-game:GetService("ReplicatedStorage").Events.CombatEvent:FireServer(unpack(args))
+local Toggle2 = Section:NewToggle("Auto Curse Farm", "Put Skills On Z,X,C,V,B,N", function(state)
+    scriptEnabled2 = state
+    if scriptEnabled2 then
+        EnableScript2()
+    else
+        DisableScript2()
     end
 end)
 
-
-
-
-Section:NewButton("Auto Curse Farm", "Put the skills on Z,X,C,V.B.N", function()
-    while true do
+function EnableScript2()
+    while scriptEnabled2 do
         wait(0.1)
+
         game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.Z,false,game)
         game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.X,false,game)
         game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.C,false,game)
         game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.V,false,game)
         game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.B,false,game)
         game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.N,false,game)
+        
+    end
+end
+
+
+function DisableScript2()
+    print("Script disabled")
+end
+
+
+local Toggle3 = Section:NewToggle("Auto Train", "ToggleInfo", function(state)
+    scriptEnabled3 = state
+    if scriptEnabled3 then
+        EnableScript3()
+    else
+        DisableScript3()
     end
 end)
 
-
-Section:NewButton("Auto Train", "ButtonInfo", function()
-    while true do
+function EnableScript3()
+    while scriptEnabled3 do
         wait(0)
+
 
 local args = {
     [1] = {
@@ -129,8 +166,11 @@ local args = {
 game:GetService("ReplicatedStorage").Events.CombatEvent:FireServer(unpack(args))
 
     end
-end)
+end
 
+function DisableScript3()
+    print("Script disabled")
+end
 
 local Tab3 = Window:NewTab("KashimoVessel")
 local Section = Tab3:NewSection("KashimoVessel")
@@ -170,44 +210,34 @@ end)
 local Tab5 = Window:NewTab("Orbs")
 local Section = Tab5:NewSection("Orbs Farm")
 
-Section:NewButton("Tp to CurseOrb", "ButtonInfo", function()
-    local player = game.Players.LocalPlayer
+local Toggle4 = Section:NewToggle("Auto Curse Orb", "ToggleInfo", function(state)
+    scriptEnabled4 = state
+    if scriptEnabled4 then
+        EnableScript4()
+    else
+        DisableScript4()
+    end
+end)
+
+function EnableScript4()
+    while scriptEnabled4 do
+        wait(0)
+
+        local player = game.Players.LocalPlayer
 local workspace = game.Workspace
 
 local CurseSpinOrb = workspace:FindFirstChild("CurseSpinOrb")
 
 if CurseSpinOrb then
-    local finger = CurseSpinOrb:FindFirstChild("CurseSpinOrb")
+    local Orb = CurseSpinOrb:FindFirstChild("CurseSpinOrb")
 
-    if finger then
+    if Orb then
+        player.Character:SetPrimaryPartCFrame(Orb.CFrame)
+
+        fireproximityprompt(workspace.CurseSpinOrb.CurseSpinOrb.Prompt)
         
-        player.Character:SetPrimaryPartCFrame(finger.CFrame)
-
         
-        local UserInputService = game:GetService("UserInputService")
-        local key = Enum.KeyCode.C
-
-        local keyDownEvent = Instance.new("InputObjectEvent")
-        keyDownEvent.Name = "InputBegan"
-        keyDownEvent.Parent = game
-
-        keyDownEvent.InputBegan:Connect(function(input)
-            if input.KeyCode == key then
-                wait(8)  
-            end
-        end)
-
-        UserInputService.InputBegan:Connect(function(input, gameProcessed)
-            if not gameProcessed and input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == key then
-                keyDownEvent.InputBegan:Fire(input)
-            end
-        end)
-
-        UserInputService.InputEnded:Connect(function(input)
-            if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == key then
-                keyDownEvent.InputBegan:Fire(input)
-            end
-        end)
+        
     else
         print("CurseSpinOrb not found.")
     end
@@ -215,49 +245,45 @@ else
     print("CurseSpinOrb not found.")
 end
 
+        
+    end
+end
+
+function DisableScript4()
+    print("Script disabled")
+end
+
+
+
+
+local Toggle5 = Section:NewToggle("Auto Clan Orb", "ToggleInfo", function(state)
+    scriptEnabled5 = state
+    if scriptEnabled5 then
+        EnableScript5()
+    else
+        DisableScript5()
+    end
 end)
 
+function EnableScript5()
+    while scriptEnabled5 do
+        wait(0)
 
-
-
-Section:NewButton("Tp to ClanOrb", "ButtonInfo", function()
-    local player = game.Players.LocalPlayer
+        local player = game.Players.LocalPlayer
 local workspace = game.Workspace
 
 local ClanSpinOrb = workspace:FindFirstChild("ClanSpinOrb")
 
-if CurseSpinOrb then
-    local ClanSpinOrb = ClanSpinOrb:FindFirstChild("ClanSpinOrb")
+if ClanSpinOrb then
+    local Orb = ClanSpinOrb:FindFirstChild("ClanSpinOrb")
 
-    if ClanSpinOrb then
+    if Orb then
+        player.Character:SetPrimaryPartCFrame(Orb.CFrame)
+
+        fireproximityprompt(workspace.ClanSpinOrb.ClanSpinOrb.Prompt)
         
-        player.Character:SetPrimaryPartCFrame(ClanSpinOrb.CFrame)
-
         
-        local UserInputService = game:GetService("UserInputService")
-        local key = Enum.KeyCode.C
-
-        local keyDownEvent = Instance.new("InputObjectEvent")
-        keyDownEvent.Name = "InputBegan"
-        keyDownEvent.Parent = game
-
-        keyDownEvent.InputBegan:Connect(function(input)
-            if input.KeyCode == key then
-                wait(8)  
-            end
-        end)
-
-        UserInputService.InputBegan:Connect(function(input, gameProcessed)
-            if not gameProcessed and input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == key then
-                keyDownEvent.InputBegan:Fire(input)
-            end
-        end)
-
-        UserInputService.InputEnded:Connect(function(input)
-            if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == key then
-                keyDownEvent.InputBegan:Fire(input)
-            end
-        end)
+        
     else
         print("ClanSpinOrb not found.")
     end
@@ -265,47 +291,46 @@ else
     print("ClanSpinOrb not found.")
 end
 
+        
+    end
+end
+
+
+function DisableScript5()
+    print("Script disabled")
+end
+
+
+
+
+local Toggle6 = Section:NewToggle("Auto MiscOrb", "ToggleInfo", function(state)
+    scriptEnabled6 = state
+    if scriptEnabled6 then
+        EnableScript6()
+    else
+        DisableScript6()
+    end
 end)
 
+function EnableScript6()
+    while scriptEnabled6 do
+        wait(0)
 
-Section:NewButton("Tp to MiscOrb", "ButtonInfo", function()
-    local player = game.Players.LocalPlayer
+        local player = game.Players.LocalPlayer
 local workspace = game.Workspace
 
 local MiscOrb = workspace:FindFirstChild("MiscOrb")
 
 if MiscOrb then
-    local MiscOrb = MiscOrb:FindFirstChild("MiscOrb")
+    local Orb = MiscOrb:FindFirstChild("MiscOrb")
 
-    if MiscOrb then
+    if Orb then
+        player.Character:SetPrimaryPartCFrame(Orb.CFrame)
+
+        fireproximityprompt(workspace.MiscOrb.MiscOrb.Prompt)
         
-        player.Character:SetPrimaryPartCFrame(MiscOrb.CFrame)
-
         
-        local UserInputService = game:GetService("UserInputService")
-        local key = Enum.KeyCode.C
-
-        local keyDownEvent = Instance.new("InputObjectEvent")
-        keyDownEvent.Name = "InputBegan"
-        keyDownEvent.Parent = game
-
-        keyDownEvent.InputBegan:Connect(function(input)
-            if input.KeyCode == key then
-                wait(8)  
-            end
-        end)
-
-        UserInputService.InputBegan:Connect(function(input, gameProcessed)
-            if not gameProcessed and input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == key then
-                keyDownEvent.InputBegan:Fire(input)
-            end
-        end)
-
-        UserInputService.InputEnded:Connect(function(input)
-            if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == key then
-                keyDownEvent.InputBegan:Fire(input)
-            end
-        end)
+        
     else
         print("MiscOrb not found.")
     end
@@ -313,15 +338,34 @@ else
     print("MiscOrb not found.")
 end
 
-end)
+        
+    end
+end
+
+
+function DisableScript6()
+    print("Script disabled")
+end
 
 
 
 local Tab6 = Window:NewTab("Items")
 local Section = Tab6:NewSection("Items")
 
-Section:NewButton("Tp To Sukuna Finger", "ButtonInfo", function()
-    local player = game.Players.LocalPlayer
+local Toggle7 = Section:NewToggle("Auto Finger", "This Will Tp To Finger When Spawned", function(state)
+    scriptEnabled7 = state
+    if scriptEnabled7 then
+        EnableScript7()
+    else
+        DisableScript7()
+    end
+end)
+
+function EnableScript7()
+    while scriptEnabled7 do
+        wait(0)
+
+        local player = game.Players.LocalPlayer
 local workspace = game.Workspace
 
 local vesselFinger = workspace:FindFirstChild("Vessel_Finger")
@@ -331,40 +375,31 @@ if vesselFinger then
 
     if finger then
         
-        player.Character:SetPrimaryPartCFrame(finger.CFrame)
-
+            player.Character:SetPrimaryPartCFrame(finger.CFrame)
         
-        local UserInputService = game:GetService("UserInputService")
-        local key = Enum.KeyCode.C
+            Callback = function()
+                for i = 1, 2 do 
+                 fireproximityprompt(workspace.Vessel_Finger.Finger.Eat)
+                         end
+                end
+            
 
-        local keyDownEvent = Instance.new("InputObjectEvent")
-        keyDownEvent.Name = "InputBegan"
-        keyDownEvent.Parent = game
-
-        keyDownEvent.InputBegan:Connect(function(input)
-            if input.KeyCode == key then
-                wait(8)  
-            end
-        end)
-
-        UserInputService.InputBegan:Connect(function(input, gameProcessed)
-            if not gameProcessed and input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == key then
-                keyDownEvent.InputBegan:Fire(input)
-            end
-        end)
-
-        UserInputService.InputEnded:Connect(function(input)
-            if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == key then
-                keyDownEvent.InputBegan:Fire(input)
-            end
-        end)
+              fireproximityprompt(workspace.Vessel_Finger.Finger.Eat)
+             
     else
         print("Finger not found inside Vessel_Finger.")
     end
 else
     print("Vessel_Finger not found in workspace.")
 end
-end)
+        
+    end
+end
+
+
+function DisableScript7()
+    print("Script disabled")
+end
 
 
 
@@ -466,7 +501,7 @@ end)
 
 Section:NewButton("Redeem Codes", "ButtonInfo", function()
     local args = {
-        [1] = "Visits7M"
+        [1] = "Visits9M"
     }
     
     game:GetService("Players").LocalPlayer.PlayerGui.Main_UI.Codes.Enter.CheckCode.EnterCode.RemoteEvent:FireServer(unpack(args))
