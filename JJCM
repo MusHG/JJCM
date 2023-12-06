@@ -1,4 +1,4 @@
-local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
+local Library = loadstring(game:HttpGet("https://pastebin.com/raw/qHcCNUM5"))()
 local Window = Library.CreateLib("JJCM | https://discord.gg/yjnZrKttU6 | Join For Updates ", "Midnight")
 local Tab = Window:NewTab("auto farm")
 local Section = Tab:NewSection("farm")
